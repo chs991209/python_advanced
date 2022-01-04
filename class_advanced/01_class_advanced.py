@@ -53,7 +53,7 @@ student_grade_list = [1, 2, 4]
 student_details_list = [
     {"gender": "Male", "score1": 100, "score2": 98},
     {"gender": "Female", "score1": 99, "score2": 97},
-    {"gender": "Female", "score1": 98, "score2": 96},
+    {"gender": "Male", "score1": 98, "score2": 96},
 ]
 
 name_list = student_names_list
@@ -96,9 +96,56 @@ students_dicts = [
         "student_name": "Park",
         "student_number": 3,
         "student_grade": 4,
-        "student_detail": {"gender": "Female", "score1": 98, "score2": 96},
+        "student_detail": {"gender": "Male", "score1": 98, "score2": 96},
     },
 ]
 
 del students_dicts[1]
 print(students_dicts)
+print()
+print()
+# >>[temp] commit
+
+
+#  Class 구조
+# 구조 설계 후 재사용성 증가, 코드 반복 최소화, 메소드
+
+
+class Student:
+    def __init__(self, name, number, grade, details):
+        self._name = name
+        self._number = number
+        self._grade = grade
+        self._details = details
+
+    # Override
+    def __str__(self):
+        return "str : {}, No.{}".format(self._name, self._number)
+
+    def __repr__(self):
+        return "repr: {}, No.{}".format(self._name, self._number)
+
+
+student1 = Student("Kim", 1, 1, {"gender": "Male", "score1": 100, "score2": 98})
+student2 = Student("Choi", 2, 2, {"gender": "Female", "score1": 99, "score2": 97})
+student3 = Student("Park", 3, 4, {"gender": "Male", "score1": 98, "score2": 96})
+
+# 모든 object 는 namespace 가 dict 기반으로 이루어져 있다.
+print(student1.__dict__)
+print(student2.__dict__)
+print(student3.__dict__)
+
+# List 선언
+students_list = []
+
+students_list.append(student1)
+students_list.append(student2)
+students_list.append(student3)
+
+print()
+
+print(students_list)
+
+# Repeat(__str__)
+for x in students_list:
+    print(x)

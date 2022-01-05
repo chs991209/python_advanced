@@ -9,12 +9,13 @@
 # General Code
 
 # student 01
-class Student():
+class Student:
     """
     Student Class
     Author: Chs
     Date: 20220104
     """
+
     student_count = 0
 
     def __init__(self, name, number, grade, details, email=None):
@@ -29,14 +30,18 @@ class Student():
         Student.student_count += 1
 
     def __str__(self):
-        return 'str {}'.format(self._name)
+        return "str {}".format(self._name)
 
     def __repr__(self):
-        return 'repr {}'.format(self._name)
+        return "repr {}".format(self._name)
 
     def detail_info(self):
-        print('Current Id : {}'.format(id(self)))
-        print('Student Detail Info : {} {} {}'.format(self._name, self._email, self._details))
+        print("Current Id : {}".format(id(self)))
+        print(
+            "Student Detail Info : {} {} {}".format(
+                self._name, self._email, self._details
+            )
+        )
 
     # Python이 오브젝트 삭제 시 자동으로 delete
     def __del__(self):
@@ -44,8 +49,14 @@ class Student():
 
 
 # Self 의 의미
-studt1 = Student('Cho', 2, 3, {'gender': 'Male', 'score1': 100, 'score2': 98})
-studt2 = Student('Jeong', 4, 1, {'gender': 'Female', 'score1': 100, 'score2': 100}, 'chs991209@naver.com')
+studt1 = Student("Cho", 2, 3, {"gender": "Male", "score1": 100, "score2": 98})
+studt2 = Student(
+    "Jeong",
+    4,
+    1,
+    {"gender": "Female", "score1": 100, "score2": 100},
+    "chs991209@naver.com",
+)
 
 # ID 확인
 print(id(studt1))

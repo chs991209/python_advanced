@@ -111,7 +111,7 @@ print()
 # 구조 설계 후 재사용성 증가, 코드 반복 최소화, 메소드
 
 
-class Student:
+class Student():
     def __init__(self, name, number, grade, details):
         self._name = name
         self._number = number

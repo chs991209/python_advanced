@@ -1,0 +1,17 @@
+List Comprehension
+
+Container vs flat
+
+Generator
+
+List & Array
+사용법, 차이점
+
+Mutable vs Immutable
+불변, 가변 자료형
+
+Sort vs Sorted
+헷갈리기 쉬운 두 메소드의 차이
+
+
++ coroutine, thread

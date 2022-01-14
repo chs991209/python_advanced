@@ -156,7 +156,7 @@ Classes = namedtuple("Classes", ["rank", "number"])
 # Group List 선언
 # 지능형 List - List Comprehension
 numbers = [str(n) for n in range(1, 21)]
-ranks = "A B C D ".split()
+ranks = "A B C D".split()
 
 # List Comprehension
 students = [Classes(rank, number) for rank in ranks for number in numbers]

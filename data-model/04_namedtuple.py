@@ -8,12 +8,11 @@
 # -> 시퀀스 Sequence, 반복 Iterator, 함수 Functions, 클래스 Class
 
 from collections import namedtuple
-from math import sqrt  # Namedtuple 사용
-
 # Object -> Python 의 data 를 추상화
 # 모든 Object-> id, type -> value  (메모리)
 # Python 은 일관성이 있음
 # sqrt - rout
+from math import sqrt
 
 # General Tuple 과 Namedtuple 의 차이
 
@@ -23,15 +22,14 @@ from math import sqrt  # Namedtuple 사용
 pt1 = (1.0, 5.0)
 pt2 = (2.5, 1.5)
 
-print("\n",
-      ("-" * 100),
-      "\n")
-
 line_len1 = sqrt((pt2[0] - pt1[0]) ** 2 + (pt2[1] - pt1[1]) ** 2)
 
+print("\n" + str("-" * 100) + "\n")
 print("EX 1-1 - ", line_len1)
 
 # Namedtuple 사용
+
+# from collections import namedtuple
 
 # Namedtuple 선언
 # Cls
@@ -84,18 +82,18 @@ print()
 print(
     "EX 2-2\n",
     "\np1 : {}\np2 : {}\np3 : {}\np4 : {}\np5 : {}".format(
-        p1, p2, p3, p4, p5
+        str(p1), str(p2), str(p3), str(p4), str(p5)
     ),
 )
 print()
 print(
     "EX 2-3\n",
     "\np1 : {}\np2 : {}\np3 : {}\np4 : {}\np5 : {}".format(
-        p1.__repr__(),
-        p2.__repr__(),
-        p3.__repr__(),
-        p4.__repr__(),
-        p5.__repr__(),
+        str(p1.__repr__()),
+        str(p2.__repr__()),
+        str(p3.__repr__()),
+        str(p4.__repr__()),
+        str(p5.__repr__()),
     ),
 )
 print("\n" + str("-" * 100) + "\n")
@@ -120,9 +118,10 @@ print()
 
 # Rename Test
 print("EX 4-4 -", p4)
-print("\n",
-      ("-" * 100),
-      "\n")
+
+#
+print("\n" + str("-" * 100) + "\n")
+#
 
 # Namedtuple Methods
 
@@ -142,52 +141,10 @@ print("EX 4-3 - ", p1._asdict(), p2._asdict(), p3._asdict())
 p2_mod = p2._replace(y=100)
 
 print("EX 4-4 - ", p2_mod)
-print("\n",
-      ("-" * 100),
-      "\n")
+#
+print("\n" + str("-" * 100) + "\n")
+#
 
 # 실 사용 실습
 # 학생 전체 그룹 생성
 # 1반에 20명, 4개의 반 -> (A, B, C, D)
-
-# Namedtuple 선언
-Classes = namedtuple("Classes", ["rank", "number"])
-
-# Group List 선언
-# 지능형 List - List Comprehension
-numbers = [str(n) for n in range(1, 21)]
-ranks = "A B C D ".split()
-
-# List Comprehension
-students = [Classes(rank, number) for rank in ranks for number in numbers]
-
-print("EX 5-1 - ", len(students))
-print("EX 5-2 - ", students[0].number)  # dict와 비슷한 방식으로 call 할 수 있다.
-print("\n",
-      ("-" * 100),
-      "\n")
-
-# 가독성 X
-
-students2 = [
-    Classes(rank, number)
-    for rank in "A B C D".split()
-    for number in [str(n) for n in range(1, 21)]
-]
-
-students3 = [
-    Classes(rank, number)
-            for rank in "A B C D".split()
-                for number in [str(n)
-                    for n in range(1, 21)]]   #계층식
-
-print("EX 6-1 - ", len(students2))
-print("EX 6-2 - ", students2[0].number)
-
-print("\n",
-      ("-" * 100),
-      "\n")
-
-# Output
-for s in students:
-    print("EX 7-1 - ", s)

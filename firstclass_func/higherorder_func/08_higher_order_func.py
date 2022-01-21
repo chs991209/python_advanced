@@ -7,6 +7,7 @@
 # 4. Function 결과로 반환 가능  ex. return func
 
 import random
+
 # ex Go, JavaScript, Reactjs, Angular -> 함수를 객체 취급> 함수형 프로그래밍 언어
 from dis import dis
 from inspect import signature
@@ -104,8 +105,16 @@ game_0119 = LottoGame()
 
 # from data_model.data_model_test.test_namedtuple import StudentCode
 # Game Play
-print("EX 4-1 - ", callable(str), callable(list), callable(factorial), callable(3.14), callable(random.choice),
-      callable(hash), callable(game_0119))
+print(
+    "EX 4-1 - ",
+    callable(str),
+    callable(list),
+    callable(factorial),
+    callable(3.14),
+    callable(random.choice),
+    callable(hash),
+    callable(game_0119),
+)
 print("EX 4-2 - ", game_0119.pick())
 
 print("EX 4-3 - ", game_0119())
@@ -121,14 +130,17 @@ print()
 
 
 def args_test(name, *contents, point=None, **attribs):
-    return '<args_test> -> ({}) ({}) ({}) ({})'.format(name, contents, point, attribs)
+    return "<args_test> -> ({}) ({}) ({}) ({})".format(name, contents, point, attribs)
 
 
-print('EX 5-1 - ', args_test('test1'))
-print('EX 5-2 - ', args_test('test1', 'test2'))
-print('EX 5-3 - ', args_test('test1', 'test2', 'test3',  id='admin'))
-print('EX 5-4 - ', args_test('test1', 'test2', 'test3',  id='admin', point=7))
-print('EX 5-5 - ', args_test('test1', 'test2', 'test3',  id='admin', point=7, password='Easy'))
+print("EX 5-1 - ", args_test("test1"))
+print("EX 5-2 - ", args_test("test1", "test2"))
+print("EX 5-3 - ", args_test("test1", "test2", "test3", id="admin"))
+print("EX 5-4 - ", args_test("test1", "test2", "test3", id="admin", point=7))
+print(
+    "EX 5-5 - ",
+    args_test("test1", "test2", "test3", id="admin", point=7, password="Easy"),
+)
 
 print()
 print()
@@ -138,15 +150,15 @@ print()
 
 sg = signature(args_test)
 
-print('EX 6-1 - ', sg)
-print('EX 6-2 - ', sg.parameters)
+print("EX 6-1 - ", sg)
+print("EX 6-2 - ", sg.parameters)
 
 print()
 
 # 모든 Info 출력
 
 for name, param in sg.parameters.items():
-    print('EX 6-3 - ', name, param.kind, param.default)
+    print("EX 6-3 - ", name, param.kind, param.default)
 
 print()
 print()
@@ -158,7 +170,7 @@ print()
 from operator import mul
 from functools import partial
 
-print('EX 7-1 - ', mul(10, 27))
+print("EX 7-1 - ", mul(10, 27))
 
 # 인수 고정
 five = partial(mul, 5)
@@ -170,9 +182,9 @@ print(oneplus(1))
 # fix 추가
 six = partial(mul, 6)
 
-print('EX 7-2 - ', five(100), six(120))
-print('EX 7-3 - ', [five(i) for i in range(1, 11)])
-print('EX 7-4 - ', list(map(five, range(1, 11))))
+print("EX 7-2 - ", five(100), six(120))
+print("EX 7-3 - ", [five(i) for i in range(1, 11)])
+print("EX 7-4 - ", list(map(five, range(1, 11))))
 
 
 # OrderedDict >> 추가 code sample
@@ -180,15 +192,15 @@ print('EX 7-4 - ', list(map(five, range(1, 11))))
 #
 from collections import OrderedDict
 
-name_script = OrderedDict[('name', 'myname'), ('yname', 'yourname')]
+name_script = OrderedDict[("name", "myname"), ("yname", "yourname")]
 print(name_script)
 print(type(name_script))
-name_script_1 = OrderedDict[('yname', 'yourname'), ('name', 'myname')]
+name_script_1 = OrderedDict[("yname", "yourname"), ("name", "myname")]
 
 if name_script == name_script_1:
-    print('Identical')
+    print("Identical")
 else:
-    print('Not Identical')
+    print("Not Identical")
 
 # OrderedDict 클래스와 dict(자료형 class)의 Method 차이를 check
 
@@ -199,23 +211,23 @@ print(dir(dict))
 # set으로 구분
 print(set(sorted(dir(OrderedDict))) - set(sorted(dir(dict))))
 
-if '__dict__' in dir(dict):
-    print('Yes, __dict__ is involved')
+if "__dict__" in dir(dict):
+    print("Yes, __dict__ is involved")
 
 else:
-    print('No, __dict__ is not involved')
+    print("No, __dict__ is not involved")
 
-print('-' * 100)
+print("-" * 100)
 
-if '__dict__' in dir(int):
-    print('Yes, __dict__ is involved')
+if "__dict__" in dir(int):
+    print("Yes, __dict__ is involved")
 
 else:
-    print('NO')
+    print("NO")
 
-print('-' * 100)
+print("-" * 100)
 
-name_script_list = ['a', 'b', 'cc', 'd', 'ee']
+name_script_list = ["a", "b", "cc", "d", "ee"]
 
 sorted_name_script = name_script_list.sort(key=len)
 print(sorted_name_script)
@@ -232,26 +244,26 @@ print()
 
 a = 10
 
-print('EX 2-1 - ', a + 10)
-print('EX 2-2 - ', a + 100)
+print("EX 2-1 - ", a + 10)
+print("EX 2-2 - ", a + 100)
 
 # 결과 누적
-print('EX 2-3 ', reduce(add, [10, 100], 10))
-print('EX 2-4 ', sum([10, 100]))
+print("EX 2-3 ", reduce(add, [10, 100], 10))
+print("EX 2-4 ", sum([10, 100]))
 
 print()
 print()
 
 
 # Class 이용
-class Averager():
+class Averager:
     def __init__(self):
         self._series = []
 
     def __call__(self, v):
         self._series.append(v)
 
-        print('class >>> {} / {}'.format(self._series, len(self._series)))
+        print("class >>> {} / {}".format(self._series, len(self._series)))
 
         return sum(self._series) / len(self._series)
 
@@ -260,9 +272,9 @@ class Averager():
 avg_cls = Averager()
 
 # 누적 확인
-print('EX 3-1 - ', avg_cls(15))
-print('EX 3-2 - ', avg_cls(35))
-print('EX 3-3 - ', avg_cls(40))
+print("EX 3-1 - ", avg_cls(15))
+print("EX 3-2 - ", avg_cls(35))
+print("EX 3-3 - ", avg_cls(40))
 
 
 print()
@@ -270,6 +282,7 @@ print()
 
 
 # Closure 사용
+
 
 def closure_avg1():
     """
@@ -287,7 +300,7 @@ def closure_avg1():
 
     def averager(v):
         series.append(v)
-        print('def1 >>> {} / {}'.format(series, len(series)))
+        print("def1 >>> {} / {}".format(series, len(series)))
 
         return sum(series) / len(series)
 
@@ -296,26 +309,27 @@ def closure_avg1():
 
 avg_closure1 = closure_avg1()
 
-print('EX 4-1 - ', avg_closure1)
-print('EX 4-2 - ', avg_closure1(14))
-print('EX 4-3 - ', avg_closure1(30))
+print("EX 4-1 - ", avg_closure1)
+print("EX 4-2 - ", avg_closure1(14))
+print("EX 4-3 - ", avg_closure1(30))
 
 print()
 print()
 
-print('EX 5-1 - ', sorted(dir(avg_closure1)))
+print("EX 5-1 - ", sorted(dir(avg_closure1)))
 print()
-print('EX 5-2 - ', sorted(dir(avg_closure1.__code__), reverse=True))
+print("EX 5-2 - ", sorted(dir(avg_closure1.__code__), reverse=True))
 print()
-print('EX 5-3 - ', avg_closure1.__code__.co_freevars)
+print("EX 5-3 - ", avg_closure1.__code__.co_freevars)
 print()
-print('EX 5-4- ', sorted(dir(avg_closure1.__closure__[0].cell_contents)))
+print("EX 5-4- ", sorted(dir(avg_closure1.__closure__[0].cell_contents)))
 
 print()
 print()
 
 
 # Inappropriate Closure Usage
+
 
 def closure_avg2():
     # Free Variable Area
@@ -328,7 +342,7 @@ def closure_avg2():
         nonlocal cnt, total
         cnt += 1
         total += v
-        print('def1 >>> {} / {}'.format(total, cnt))
+        print("def1 >>> {} / {}".format(total, cnt))
 
         return total / cnt
 
@@ -337,8 +351,8 @@ def closure_avg2():
 
 avg_closure2 = closure_avg2()
 
-print('EX 5-5 - ', avg_closure2(14))
-print('EX 5-6 - ', avg_closure2(16))
+print("EX 5-5 - ", avg_closure2(14))
+print("EX 5-6 - ", avg_closure2(16))
 
 
 # Decorator Prac
@@ -366,9 +380,9 @@ def perf_clock(func):
         # Function Name
         title = func.__name__
         # 매개변수
-        args_str = ', '.join(repr(arg) for arg in args)
+        args_str = ", ".join(repr(arg) for arg in args)
         # Output
-        print('Result : [%0.5fs] %s(%s) -> %r' % (et, title, args_str, result))
+        print("Result : [%0.5fs] %s(%s) -> %r" % (et, title, args_str, result))
         return result
 
     return perf_clocked
@@ -418,16 +432,16 @@ def fact_func(n):
 # # print(sorted(dir(non_deco2)))
 # # print(sorted(dir(non_deco3)))
 
-print('*' * 40, 'Called Non Decorator -> time_func')
-print('EX 7-7 - ')
+print("*" * 40, "Called Non Decorator -> time_func")
+print("EX 7-7 - ")
 time_func(2)
 
-print('*' * 40, 'Called Non Decorator -> sum_func')
-print('EX 7-8 - ')
+print("*" * 40, "Called Non Decorator -> sum_func")
+print("EX 7-8 - ")
 sum_func(1, 2, 5, 10)
 
-print('*' * 40, 'Called Non Decorator -> fact_func')
-print('EX 7-9 - ')
+print("*" * 40, "Called Non Decorator -> fact_func")
+print("EX 7-9 - ")
 fact_func(3)
 
 # 회원 탈퇴

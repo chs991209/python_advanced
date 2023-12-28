@@ -96,3 +96,34 @@ def createsum():
 
 
 su = createsum()
+
+"""
+중첩 Coroutine 처리를 하자.
+"""
+
+
+# def gen1():
+#     for x in "AB":
+#         yield x
+#     for k in "Alphabet":
+#         yield k
+#
+def gen1():
+    yield from "AB"
+    yield from "Alphabet"
+
+
+test1 = gen1()
+
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(next(test1))
+print(list(gen1()))
+# print(getgeneratorstate(test1))

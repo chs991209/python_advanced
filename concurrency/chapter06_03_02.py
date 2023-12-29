@@ -83,6 +83,7 @@ def get_sales_data():  # 선언문
         # show_with_newline("\nData rows: {}".format(len(data)))
 
 
+# 모든 data reader에서 특정 nation에 대한 data들만 반환합니다.
 @first_arg_iterable_rest_string
 def get_data_by_nation(data, nation):
     return [row for row in data if row["Country"] == nation]
@@ -101,7 +102,6 @@ def save_seperated_csvs(nation):
 
     save_csv(iterable_data, nation.lower() + ".csv")
 
-    # return data_of_sales_by_nation
     return nation
 
 
@@ -131,8 +131,6 @@ def main(save_nation_to_csv):
     end_time = time.time()
 
     spent_time = end_time - start_time
-
-    # number_of_nation_column_count = get_length(NATION_LS)
 
     # csv로 정리한 국가 개수를 할당합니다.
     msg = "\n{} csv has been seperated in: {:.2f} seconds"  # 소수점 둘째 자리까지 콘솔에 찍어 준다.

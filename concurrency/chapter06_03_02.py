@@ -60,16 +60,16 @@ def show(string):
 
 
 # NOSQL data 형태로 csv에서 뽑아냅니다.
-@string_args
-def get_sales_data_by_nation(nation):  # 선언문
-    with open(TARGET_CSV, "r") as f:
-        reader = csv.DictReader(f)  # Dictionaries를 담은 reader를 call
-
-        data = [
-            r for r in reader if r["Country"] == nation
-        ]  # Using List Comprehension # reader type은 list가 아니며, .map()이 없다.
-        show_with_newline("\nData rows: {}".format(len(data)))
-        return data
+# @string_args
+# def get_sales_data_by_nation(nation):  # 선언문
+#     with open(TARGET_CSV, "r") as f:
+#         reader = csv.DictReader(f)  # Dictionaries를 담은 reader를 call
+#
+#         data = [
+#             r for r in reader if r["Country"] == nation
+#         ]  # Using List Comprehension # reader type은 list가 아니며, .map()이 없다.
+#         show_with_newline("\nData rows: {}".format(len(data)))
+#         return data
 
 
 @log_dependency_by_flush
@@ -83,16 +83,19 @@ def get_sales_data():  # 선언문
         # show_with_newline("\nData rows: {}".format(len(data)))
 
 
+# 모든 data reader에서 특정 nation에 대한 data들만 반환합니다.
 @first_arg_iterable_rest_string
 def get_data_by_nation(data, nation):
     return [row for row in data if row["Country"] == nation]
 
 
 sales_data = get_sales_data()
+print('Sales Data length:', len(sales_data))
 
 
 #  데이터를 csv 여러 개로 국가 별로 저장합니다.
 # 선언문
+@log_dependency_by_flush
 def save_seperated_csvs(nation):
     # 저장 실행문
     show_with_newline(nation)  # 단순히 국가 별로 진행 상황을 콘솔에 찍는다.
@@ -101,7 +104,6 @@ def save_seperated_csvs(nation):
 
     save_csv(iterable_data, nation.lower() + ".csv")
 
-    # return data_of_sales_by_nation
     return nation
 
 
@@ -123,16 +125,14 @@ def main(save_nation_to_csv):
 
     start_time = time.time()
 
-    with futures.ThreadPoolExecutor(worker) as excutor:
-        number_of_nation_column_count = excutor.map(
+    with futures.ThreadPoolExecutor(worker) as executor:  # GIL
+        number_of_nation_column_count = executor.map(
             save_nation_to_csv, iterable_nations
         )  # .map(func, iterables)
 
     end_time = time.time()
 
     spent_time = end_time - start_time
-
-    # number_of_nation_column_count = get_length(NATION_LS)
 
     # csv로 정리한 국가 개수를 할당합니다.
     msg = "\n{} csv has been seperated in: {:.2f} seconds"  # 소수점 둘째 자리까지 콘솔에 찍어 준다.
